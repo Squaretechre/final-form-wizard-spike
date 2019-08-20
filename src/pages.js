@@ -1,6 +1,8 @@
 import React from "react";
 import { Field } from "react-final-form";
 
+let subscribers = [];
+
 const Page = ({ children }) => children;
 
 const Error = ({ name }) => (
@@ -194,6 +196,10 @@ const isLastPage = currentPageId => {
 
 const lastPageId = () => totalPages() - 1;
 
+const notifySubscribersOfPageValidityUpdate = pages => {
+  subscribers.forEach(subscriber => subscriber(pages));
+};
+
 const updatePageValidity = (pageId, pageValidity) => {
   const page = pages[pageId];
   const updatedPage = {
@@ -201,6 +207,16 @@ const updatePageValidity = (pageId, pageValidity) => {
     isValid: pageValidity
   };
   pages = Object.assign([], pages, { [pageId]: updatedPage });
+
+  notifySubscribersOfPageValidityUpdate(pages);
+};
+
+const addPageValiditySubscriber = subscriber => {
+  subscribers.push(subscriber);
+};
+
+const removeSubscribers = () => {
+  subscribers = [];
 };
 
 export default {
@@ -209,5 +225,7 @@ export default {
   totalPages,
   isLastPage,
   lastPageId,
-  updatePageValidity
+  updatePageValidity,
+  addPageValiditySubscriber,
+  removeSubscribers
 };
