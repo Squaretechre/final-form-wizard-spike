@@ -212,6 +212,7 @@ const updatePageValidity = (pageId, pageValidity) => {
 };
 
 const addPageValiditySubscriber = subscriber => {
+  console.log("adding subscriber..");
   subscribers.push(subscriber);
 };
 
