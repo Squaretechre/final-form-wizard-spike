@@ -1,5 +1,5 @@
 import React from "react";
-import Wizard from "./Wizard";
+import FormNavigation from "./FormNavigation";
 import { Field } from "react-final-form";
 
 const Error = ({ name }) => (
@@ -46,7 +46,7 @@ const validatePage4 = values => {
 };
 
 const page1 = (
-  <Wizard.Page validate={validatePage1}>
+  <FormNavigation.Page validate={validatePage1}>
     <div>
       <label>First Name</label>
       <Field
@@ -69,11 +69,11 @@ const page1 = (
       />
       <Error name="lastName" />
     </div>
-  </Wizard.Page>
+  </FormNavigation.Page>
 );
 
 const page2 = (
-  <Wizard.Page validate={validatePage2}>
+  <FormNavigation.Page validate={validatePage2}>
     <div>
       <label>Email</label>
       <Field name="email" component="input" type="email" placeholder="Email" />
@@ -89,11 +89,11 @@ const page2 = (
       </Field>
       <Error name="favoriteColor" />
     </div>
-  </Wizard.Page>
+  </FormNavigation.Page>
 );
 
 const page3 = (
-  <Wizard.Page validate={validatePage3}>
+  <FormNavigation.Page validate={validatePage3}>
     <div>
       <label>Employed?</label>
       <Field name="employed" component="input" type="checkbox" />
@@ -109,11 +109,11 @@ const page3 = (
       </Field>
       <Error name="toppings" />
     </div>
-  </Wizard.Page>
+  </FormNavigation.Page>
 );
 
 const page4 = (
-  <Wizard.Page validate={validatePage4}>
+  <FormNavigation.Page validate={validatePage4}>
     <div>
       <label>Best Stooge?</label>
       <div>
@@ -135,7 +135,7 @@ const page4 = (
       <Field name="notes" component="textarea" placeholder="Notes" />
       <Error name="notes" />
     </div>
-  </Wizard.Page>
+  </FormNavigation.Page>
 );
 
 let pages = [

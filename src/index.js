@@ -2,7 +2,7 @@
 import React from "react";
 import { render } from "react-dom";
 import Styles from "./Styles";
-import Wizard from "./Wizard";
+import FormNavigation from "./FormNavigation";
 import Pages from "./pages";
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -27,7 +27,7 @@ const App = () => (
       Notice the mixture of field-level and record-level (or <em>page-level</em>{" "}
       in this case) validation.
     </p>
-    <Wizard
+    <FormNavigation
       initialValues={{ employed: true, stooge: "larry" }}
       onSubmit={onSubmit}
       pages={Pages}
