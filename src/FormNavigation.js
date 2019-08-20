@@ -6,7 +6,6 @@ export default class FormNavigation extends React.Component {
   static propTypes = {
     onSubmit: PropTypes.func.isRequired
   };
-  static Page = ({ children }) => children;
 
   constructor(props) {
     super(props);
