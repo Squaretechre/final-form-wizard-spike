@@ -141,21 +141,25 @@ const page4 = (
 let pages = [
   {
     component: page1,
+    route: "/first-page",
     validate: validatePage1,
     isValid: false
   },
   {
     component: page2,
+    route: "/second-page",
     validate: validatePage2,
     isValid: false
   },
   {
     component: page3,
+    route: "/third-page",
     validate: validatePage3,
     isValid: false
   },
   {
     component: page4,
+    route: "/fourth-page",
     validate: validatePage4,
     isValid: false
   }
@@ -167,6 +171,14 @@ const isValid = validationResult => {
 
 const getById = index => {
   const matchedPage = pages[index];
+  return {
+    component: matchedPage.component,
+    validation: values => isValid(matchedPage.validate(values))
+  };
+};
+
+const getByRoute = route => {
+  const matchedPage = pages.find(page => page.route === route);
   return {
     component: matchedPage.component,
     validation: values => isValid(matchedPage.validate(values))
@@ -192,6 +204,7 @@ const updatePageValidity = (pageId, pageValidity) => {
 
 export default {
   getById,
+  getByRoute,
   totalPages,
   isLastPage,
   lastPageId,
